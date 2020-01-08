@@ -1,0 +1,13 @@
+.flopDiv{
+  width: 450px;
+  height: 200px;
+  display: flex;
+}
+
+.flips{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+

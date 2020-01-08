@@ -1,0 +1,200 @@
+.flip {
+  display: inline-block;
+  position: relative;
+  width: 60px;
+  height: 100px;
+  line-height: 100px;
+  border: solid 1px #000;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 66px;
+  color: #fff;
+  box-shadow: 0 0 6px rgba(0, 0, 0, .5);
+  text-align: center;
+  font-family: "Helvetica Neue"
+}
+
+
+.flip .digital:before,
+.flip .digital:after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: #000;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.flip .digital:before{
+  top: 0;
+  bottom: 50%;
+  border-radius: 10px 10px 0 0;
+  border-bottom: solid 1px #666;
+}
+
+.flip .digital:after{
+  top: 50%;
+  bottom: 0;
+  line-height: 0;
+  border-radius: 0 0 10px 10px;
+}
+
+
+
+
+.flip .numDiv0:before,
+.flip .numDiv0:after{
+  content: "0";
+}
+
+
+.flip .numDiv1:before,
+.flip .numDiv1:after{
+  content: "1";
+}
+
+
+.flip .numDiv2:before,
+.flip .numDiv2:after{
+  content: '2';
+}
+
+
+
+.flip .numDiv3:before,
+.flip .numDiv3:after{
+  content: '3';
+}
+
+
+.flip .numDiv4:before,
+.flip .numDiv4:after{
+  content: '4';
+}
+
+.flip .numDiv5:before,
+.flip .numDiv5:after{
+  content: '5';
+}
+
+
+.flip .numDiv6:before,
+.flip .numDiv6:after{
+  content: '6';
+}
+
+
+.flip .numDiv7:before,
+.flip .numDiv7:after{
+  content: '7';
+}
+
+.flip .numDiv8:before,
+.flip .numDiv8:after{
+  content: '8';
+}
+
+.flip .numDiv9:before,
+.flip .numDiv9:after{
+  content: '9';
+}
+
+
+
+/* 向上翻牌 */
+.up .before:after{
+  z-index: 3;
+}
+
+.up .after:before{
+  z-index: 2;
+  transform-origin: 50% 100%;
+  transform: perspective(160px) rotateX(-180deg);
+}
+
+.up .after:after,
+.up .before:before{
+  z-index: 1;
+}
+
+.up.go .before:after{
+  transform-origin: 50% 0;
+  animation: frontFlipUp 0.5s ease-in-out both;
+  box-shadow: 0 -2px 6px rgba(255, 255, 255, 0.3);
+  backface-visibility: hidden;
+}
+/* ease-in-out 规定以慢速开始和结束的过渡效果   相对于匀速，（开始和结束都慢） */
+/* animation-fill-mode : none | forwards | backwards | both;    both 向前和向后填充模式都被应用。 */
+.up.go .after:before {
+  animation: backFlipUp 0.5s ease-in-out both;
+}
+
+@keyframes frontFlipUp{
+  0% {
+    transform: perspective(160px) rotateX(0deg);
+  }
+
+  100% {
+      transform: perspective(160px) rotateX(180deg);
+  }
+}
+
+@keyframes backFlipUp {
+  0% {
+      transform: perspective(160px) rotateX(-180deg);
+  }
+
+  100% {
+      transform: perspective(160px) rotateX(0deg);
+  }
+}
+
+
+/* 向下翻牌 */
+.down .before:before{
+  z-index: 3;
+}
+
+.down .after:after{
+  z-index: 2;
+  transform-origin: 50% 0;
+  transform: perspective(160px) rotateX(180deg);
+}
+
+.down .after:before,
+.down .before:after{
+  z-index: 1;
+}
+
+.down.go .before:before{
+  transform-origin: 50% 100%;
+  animation: frontFlipDown 0.5s ease-in-out both;
+  box-shadow: 0 -2px 6px rgba(255, 255, 255, 0.3);
+  backface-visibility: hidden;
+}
+/* ease-in-out 规定以慢速开始和结束的过渡效果   相对于匀速，（开始和结束都慢） */
+/* animation-fill-mode : none | forwards | backwards | both;    both 向前和向后填充模式都被应用。 */
+.down.go .after:after {
+  animation: backFlipDown 0.5s ease-in-out both;
+}
+
+@keyframes frontFlipDown{
+  0% {
+    transform: perspective(160px) rotateX(0deg);
+  }
+
+  100% {
+      transform: perspective(160px) rotateX(-180deg);
+  }
+}
+
+@keyframes backFlipDown {
+  0% {
+      transform: perspective(160px) rotateX(180deg);
+  }
+
+  100% {
+      transform: perspective(160px) rotateX(0deg);
+  }
+}
